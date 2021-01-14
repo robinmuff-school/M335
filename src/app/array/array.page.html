@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Array</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text *ngFor="let fruecht of fruechte">
+    <p>{{$index}} {{fruecht.name}}</p>
+  </ion-text>
+
+  <ion-item *ngFor="let frucht of fruechte2">
+    <ion-avatar slot="start">
+      <ion-img [src]="frucht.imgURL"></ion-img>
+    </ion-avatar>
+    <ion-label>{{frucht.name}}</ion-label>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Newsletter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="primary">
+    <h1>Jetzt für unseren neusten Newsletter anmelden</h1>
+  </ion-text>
+  <form [formGroup]="contactForm" (ngSubmit)="sendContactForm()">
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="Deine Email" required></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

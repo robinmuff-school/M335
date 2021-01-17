@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Navigation Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="primary">
+    <h1 *ngIf="welcomestring || eventid">Welcome with param: </h1>
+    <p>{{welcomestring}}</p>
+    <p>{{eventid}}</p>
+  </ion-text>
+  <ion-button (click)="navigatetonavigate()" expand="block" fill="clear" shape="round">Back</ion-button>
+</ion-content>

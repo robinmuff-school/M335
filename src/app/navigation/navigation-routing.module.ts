@@ -7,6 +7,9 @@ const routes: Routes = [
   {
     path: '',
     component: NavigationPage
+  }, {
+    path: 'detail',
+    loadChildren: () => import('../navigationdetail/navigationdetail-routing.module').then( m => m.NavigationdetailPageRoutingModule)
   }
 ];
 

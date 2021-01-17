@@ -8,6 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-button href="/navigation-detail">To Detail page (without function)</ion-button>
-  <ion-button (click)="navToDetailPageByURL()">To Detail page</ion-button>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button href="/navigationdetail" expand="full">To Detail page (without function)</ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="navToDetailPageByURL()" expand="full">To Detail page (without param)</ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="navToDetailwithparam()" expand="full" fill="outline">To Detail page (with param)</ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="navToDetailwithparamoverurl()" expand="full">To Detail page (with param url)</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

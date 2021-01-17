@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alerts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="presentAlertPrompt()" expand="block" fill="clear" shape="round">
+    Click me
+  </ion-button>
+
+  <h1 [hidden]="!nickname">Ich liebe es {{ nickname }} genannt zu werden!</h1>
+</ion-content>

@@ -20,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./navigation/navigation.module').then( m => m.NavigationPageModule)
   },
   {
-    path: 'navigation-detail',
-    loadChildren: () => import('./navigation-detail/navigation-detail.module').then( m => m.NavigationDetailPageModule)
+    path: 'navigationdetail',
+    loadChildren: () => import('./navigationdetail/navigationdetail.module').then( m => m.NavigationdetailPageModule)
   },
   {
     path: 'zahlen',
@@ -46,7 +46,20 @@ const routes: Routes = [
   {
     path: 'taschenrechner',
     loadChildren: () => import('./taschenrechner/taschenrechner.module').then( m => m.TaschenrechnerPageModule)
+  },
+  {
+    path: 'navigationdetail',
+    loadChildren: () => import('./navigationdetail/navigationdetail.module').then( m => m.NavigationdetailPageModule)
+  },  {
+    path: 'alerts',
+    loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
+  },
+  {
+    path: 'newsletter',
+    loadChildren: () => import('./newsletter/newsletter.module').then( m => m.NewsletterPageModule)
   }
+
+
 ];
 
 @NgModule({

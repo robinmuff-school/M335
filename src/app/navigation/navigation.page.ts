@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./navigation.page.scss'],
 })
 export class NavigationPage implements OnInit {
-  navigateToFormTS: string = '/navigation-detail';
+  navigateToFormTS: string = '/navigationdetail';
 
   constructor(private router: Router) { }
 
@@ -15,6 +15,15 @@ export class NavigationPage implements OnInit {
   }
 
   navToDetailPageByURL() {
-    this.router.navigateByUrl(this.navigateToFormTS);
+    this.router.navigateByUrl('/navigationdetail');
+  }
+  
+  navToDetailwithparam() {
+    this.router.navigate(['/navigationdetail', { id: "LOL"}]);
+  }
+
+  navToDetailwithparamoverurl() {
+    let id = 2
+    this.router.navigateByUrl('/navigationdetail/' + id);
   }
 }

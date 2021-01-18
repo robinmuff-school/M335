@@ -1,6 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+//import { LogoutComponent } from './logout/logout.page';
+// Neue imports hinzufügen
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+// Standartverhalten festlegen
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToRoot = () => redirectLoggedInTo(['']);
+
 const routes: Routes = [
   {
     path: '',
@@ -17,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'navigation',
-    loadChildren: () => import('./navigation/navigation.module').then( m => m.NavigationPageModule)
+    loadChildren: () => import('./navigation/navigation.module').then( m => m.NavigationPageModule),
   },
   {
     path: 'navigationdetail',
@@ -50,13 +58,36 @@ const routes: Routes = [
   {
     path: 'navigationdetail',
     loadChildren: () => import('./navigationdetail/navigationdetail.module').then( m => m.NavigationdetailPageModule)
-  },  {
+  },
+  {
     path: 'alerts',
     loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
   },
   {
     path: 'newsletter',
     loadChildren: () => import('./newsletter/newsletter.module').then( m => m.NewsletterPageModule)
+  },
+  { path: "login", 
+    loadChildren: "./login/login.module#LoginPageModule", 
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToRoot }
+  },
+  {
+    path: "register",
+    loadChildren: "./register/register.module#RegisterPageModule",
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToRoot }
+  },  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
+    path: 'speicher',
+    loadChildren: () => import('./speicher/speicher.module').then( m => m.SpeicherPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
 
 

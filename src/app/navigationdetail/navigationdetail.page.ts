@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-navigationdetail',
@@ -10,7 +11,7 @@ export class NavigationdetailPage implements OnInit {
   welcomestring:string = "";
   eventid:string = "";
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private storage:Storage) {
     
    }
 

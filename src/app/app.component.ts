@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './_core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  public isLogedin;
+  private isfirst:boolean = true;
+
   public selectedIndex = 0;
   public appPages = [
     {
@@ -64,16 +68,42 @@ export class AppComponent implements OnInit {
       title: 'Newsletter',
       url: '/newsletter',
       icon: 'beer'
+    }, {
+      title: "Chat",
+      url: "/chat",
+      icon: "beer"
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private afAuth: AuthService
   ) {
     this.initializeApp();
+
+    this.afAuth.authstate().subscribe(auth => {
+      if (!(this.isfirst)) {
+        this.appPages.pop();
+        this.isfirst = false;
+      }
+      
+      if (auth == null) {
+        //this.appPages.pop();
+        this.appPages.push({
+          title: "LOGIN",
+          url: "/login",
+          icon: "beer"
+        })
+      } else {
+        this.appPages.push({
+          title: "LOGOUT",
+          url: "/logout",
+          icon: "beer"
+        })
+      }
+    })
   }
 
   initializeApp() {

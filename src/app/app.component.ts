@@ -12,10 +12,10 @@ import { AuthService } from './_core/auth.service';
 })
 export class AppComponent implements OnInit {
   public isLogedin;
-  private isfirst:boolean = true;
 
   public selectedIndex = 0;
-  public appPages = [
+  public appPages = [];
+  private sideLinks = [
     {
       title: 'Testpage',
       url: '/testpage',
@@ -72,8 +72,12 @@ export class AppComponent implements OnInit {
       title: "Chat",
       url: "/chat",
       icon: "beer"
+    }, {
+      title: "Lokaler Speicher",
+      url: "/speicher",
+      icon: "beer"
     }
-  ];
+  ]
 
   constructor(
     private platform: Platform,
@@ -84,13 +88,9 @@ export class AppComponent implements OnInit {
     this.initializeApp();
 
     this.afAuth.authstate().subscribe(auth => {
-      if (!(this.isfirst)) {
-        this.appPages.pop();
-        this.isfirst = false;
-      }
+      this.appPages = this.sideLinks;
       
       if (auth == null) {
-        //this.appPages.pop();
         this.appPages.push({
           title: "LOGIN",
           url: "/login",

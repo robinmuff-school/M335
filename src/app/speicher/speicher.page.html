@@ -1,35 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>speicher</ion-title>
+    <ion-title>Speicher</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div #scrollMe class="chat-nachrichten" (swipe)="swipeEvent($event)">
-    <ion-list>
-        <div class="messages" [class.other]="chat.username === this.currentUser">
-            <div class="message">
-                <span>
-                    <h3 *ngIf="chat.username" >{{chat.username}} </h3>                                                    
-                    <p *ngIf="chat.text">{{chat.text}}</p>
-                 </span>
-                <div class="time" *ngIf="showDates">{{chat.date}}</div>
-            </div>
-        </div>
-    </ion-list>
-  </div>
-
-  <form class="chat-eingabe">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="10">
-          <ion-input type="text" placeholder="Awesome Input"></ion-input>
-        </ion-col>
-        <ion-col size="2">
-          <ion-icon *ngIf="!showSpinnerIcon" name="send"></ion-icon>
-          <ion-spinner *ngIf="showSpinnerIcon" name="bubbles"></ion-spinner>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+  <ion-text *ngIf='isfirststart' color="primary">
+    <h1>Awesome text by first start</h1>
+  </ion-text>
+  <ion-text *ngIf='!isfirststart' color="primary">
+    <h1>Awesome text by second start</h1>
+  </ion-text>
+  <ion-button *ngIf='isfirststart' (click)="click()" expand="block" fill="clear" shape="round">
+    Second Page
+  </ion-button>
 </ion-content>

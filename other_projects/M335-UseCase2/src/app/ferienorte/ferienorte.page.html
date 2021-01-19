@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start"><ion-menu-button></ion-menu-button></ion-buttons>
+    <ion-title>Ferienorte</ion-title>
+    <ion-button slot="end" (click)="addFerienort()" expand="block" fill="clear" color="light" shape="round">
+      +
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-item *ngFor="let item of ferienorte|async">
+            {{ item.name }}
+        </ion-item>
+    </ion-list>
+</ion-content>

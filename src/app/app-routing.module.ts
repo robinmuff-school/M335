@@ -77,7 +77,8 @@ const routes: Routes = [
     loadChildren: "./register/register.module#RegisterPageModule",
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectLoggedInToRoot }
-  },  {
+  },
+  {
     path: 'logout',
     loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   },
